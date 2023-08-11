@@ -1,0 +1,47 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.2'
+	id 'io.spring.dependency-management' version '1.1.2'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+     // JUnit 5 쥬피터 라이브러리
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+	// AssertJ 라이브러리
+	testImplementation 'org.assertj:assertj-core:3.22.0'
+	
+	// Slf4j(로깅 표준 인터페이스) 라이브러리
+	implementation 'org.slf4j:slf4j-api:2.0.6'
+	
+	// Logback 라이브러리 (Slf4j 구현체)
+	implementation 'ch.qos.logback:logback-classic:1.4.5'
+	testImplementation 'ch.qos.logback:logback-classic:1.4.5'
+
+	// Lombok 라이브러리 (컴파일 라이브러리)
+	compileOnly 'org.projectlombok:lombok:1.18.28'
+	
+	//JSP 엔진
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	
+	//Spring MVC 모듈(스프링컨테이너 + spring MVC
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
