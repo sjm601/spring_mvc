@@ -3,6 +3,7 @@ package com.ezen.springmvc;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.ezen.springmvc.domain.member.dto.Member;
@@ -15,7 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class MemberMapperTest {
-	private final MemberMapper memberMapper;
+	@Autowired
+	MemberMapper memberMapper;
 	
 	@Test
 	public void findByAllTest() {
