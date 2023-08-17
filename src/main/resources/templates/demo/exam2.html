@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>타임리프 사용하기</title>
+</head>
+<body>
+	<h2>조건분기</h2>
+	
+	<div th:if="${score} >= 60" th:text="Success">성공</div>
+	<div th:if="${score} < 60" th:text="Fail">성공</div>
+	
+	<h2>점수표 </h2>
+	
+	<div th:switch="${score/10}">
+	<span th:case="10" th:text="수">등급</span>
+	<span th:case="9" th:text="수">등급</span>
+	<span th:case="8" th:text="우">등급</span>
+	<span th:case="7" th:text="미">등급</span>
+	<span th:case="6" th:text="양">등급</span>
+	<span th:case="*" th:text="가">등급</span>
+	</div>
+	
+	<!--/* 타임리프 디폴트 객체 */-->
+	<div th:with="x=5000000, y=32156465.879">
+	<span th:text="${#numbers.formatDecimal(y,3,'COMMA',2,'POINT')}"></span>
+	</div>
+	<div th:with="today=${#dates.createNow()}">
+	<span th:text="${#dates.format(today, 'yyyy년 MM월 dd일')}">2023년 5월 3일	</span>
+	</div>
+	
+	<div th:text="${param.name}"></div>
+	<div th:text="${session.loginId}"></div>
+	<div th:text="${@thymeleafSampleController}"></div>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

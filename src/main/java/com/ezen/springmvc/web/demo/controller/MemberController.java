@@ -14,52 +14,72 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 회원 관련 요청에 대한 세부 컨트롤러(핸들러)
- * @author 박상훈
- *
+ * 회원관련 요청(CRUD)에 대한 세부 컨트롤러(핸들러)
  */
-@Slf4j
 @Controller
 @RequestMapping("/member")
+@Slf4j
 public class MemberController {
 	
 	@GetMapping("/regist")
-	public String form(Model model){
+	public String form(Model model) {
 		return "regist";
 	}
 	
 	//@RequestMapping(value="/regist", method = RequestMethod.POST)
+//	@PostMapping("/regist")
+//	public String regist(@RequestParam String id, @RequestParam String passwd, Model model) {
+//		log.info("수신한 아이디 {}", id);
+//		log.info("수신한 비번 {}", passwd);
+//		// service를 이용한 DB 등록 처리
+//		return "redirect:regist-result";
+//	}
+	
 	@PostMapping("/regist")
-	public String regist(@ModelAttribute Member member, Model model){
-		log.info("수신한 사용자 정보 : {}", member);
-		//service를 이용한 DB 등록 처리
+	public String regist(@ModelAttribute Member member, Model model) {
+		log.info("수신한 사용자 정보 {}", member);
+		// service를 이용한 DB 등록 처리
 		return "redirect:regist-result";
 	}
 	
 	
+	
 	@GetMapping("/regist-result")
-	public String registResult(Model model){
+	public String registResult(Model model) {
 		return "regist-result";
 	}
 	
-	@GetMapping(value="/find" , params = "admin=bangry")
-	public String find(Model model){
+	@GetMapping(value="/find", params="admin=bangry")
+	public String find(Model model) {
 		return "hello";
 	}
 	
-	//member/회원아이디(bangry)
+	//member/bangry
 	@GetMapping("/{memberId}")
-	public String read(@PathVariable String memberId, @CookieValue(value = "loginId", required = false, defaultValue = "guest") String loginId,  Model model){
-		log.info("수신한 회원아이디 {}",memberId);
-		log.info("로그인 아이디 {}",loginId);
+	public String read(@PathVariable String memberId, 
+					   @CookieValue(value = "loginId", required = false, defaultValue = "손님") String loginId, 
+					   Model model) {
+		log.info("수신한 회원아이디 {}", memberId);
+		log.info("로그인 아이디 {}", loginId);
 		return "hello";
 	}
-
-	//member/회원아이디(bangry)
-		@PostMapping("/login")
-		public String login(@RequestParam String id,@RequestParam String passwd, HttpSession session ,Model model){
-			session.setAttribute("loginId", id);
-			log.info("세션에 저장된 아이디 : {}",session.getAttribute("loginId"));
-			return "hello";
-		}
+	
+	//member/bangry
+	@PostMapping("/login")
+	public String login(@RequestParam String id, @RequestParam String passwd, HttpSession session , Model model) {
+		session.setAttribute("loginId", id);
+		log.info("세션에 저장된 아이디 {}", session.getAttribute("loginId"));
+		return "hello";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+

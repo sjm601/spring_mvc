@@ -32,15 +32,22 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok:1.18.28'
 	
 	//JSP 엔진
-	implementation 'javax.servlet:jstl'
-	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	//implementation 'javax.servlet:jstl'
+	//implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	
 	//Spring MVC 모듈(스프링컨테이너 + spring MVC
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
+	//타임리프 엔진
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	// 오라클 jdbc 드라이버
+	implementation 'com.oracle.database.jdbc:ojdbc8:21.9.0.0'
+	// Spring-Mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+}	
+
 
 tasks.named('test') {
 	useJUnitPlatform()

@@ -1,4 +1,4 @@
-package com.ezen.springmvc.web.demo.controller;
+package com.ezen.springmvc.domain.member.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,14 +7,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@NoArgsConstructor
-@AllArgsConstructor
+/**
+ * Spring Mybatis 사용을 위한 멤버 DTO
+ * @author 박상훈
+ *
+ */
+
+@ToString
 @Getter
 @Setter
-@ToString
+@AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class Member {
 	private String id;
 	private String passwd;
-	private int age;
+	private String name;
+	private String email;
+	private String regdate;
+	
 }

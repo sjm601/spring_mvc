@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="setContent(content)">
+<head>
+<meta charset="utf-8">
+<title>템플릿 페이지</title>
+<style>	
+*{
+	margin: 0;
+	padding: 0;
+}
+.header{
+	width:100vw;
+	height:20vh;
+	background-color: pink;
+}
+.content{
+	width:100vw;
+	height:70vh;
+	background-color: red;
+}
+.footer{
+	width: 100vw;
+	height: 10vh;
+	background-color: yellow;
+}
+</style>
+</head>
+
+<body>
+	<div class='header'>
+		<h1>헤더 영역 입니다..</h1>
+	</div>
+	
+	<div class='content'>	
+		<th:block th:replace="${content}"></th:block>
+	</div>
+	
+	<div class='footer'>
+		<h1>바닦글 영역 입니다..</h1>
+	</div>
+	
+</th:block>	
+</body>
+
+</html>
