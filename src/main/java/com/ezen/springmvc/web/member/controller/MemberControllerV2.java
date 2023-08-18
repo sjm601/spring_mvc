@@ -22,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/members")
+@RequestMapping("/member")
 @Slf4j
 public class MemberControllerV2 {
 	

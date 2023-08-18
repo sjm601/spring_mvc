@@ -1,46 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="setContent(content)">
 <head>
 <meta charset="utf-8">
-<title>템플릿 페이지</title>
-<style>	
-*{
-	margin: 0;
-	padding: 0;
-}
-.header{
-	width:100vw;
-	height:20vh;
-	background-color: pink;
-}
-.content{
-	width:100vw;
-	height:70vh;
-	background-color: red;
-}
-.footer{
-	width: 100vw;
-	height: 10vh;
-	background-color: yellow;
-}
-</style>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>다중 게시판 실습용 웹 디자인</title>
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
 </head>
 
 <body>
-	<div class='header'>
-		<h1>헤더 영역 입니다..</h1>
-	</div>
-	
-	<div class='content'>	
-		<th:block th:replace="${content}"></th:block>
-	</div>
-	
-	<div class='footer'>
-		<h1>바닦글 영역 입니다..</h1>
-	</div>
-	
-</th:block>	
-</body>
+	<div class="d-flex" id="wrapper">
 
+		<!-- Sidebar -->
+		<div class="bg-light border-right" id="sidebar-wrapper">
+			<div class="sidebar-heading">Full Stack Developer</div>
+			<div class="list-group list-group-flush">
+				<a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+				<a href="#" class="list-group-item list-group-item-action bg-light">Favorites</a>
+			</div>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<th:block th:replace="${content}"></th:block>
+		</div>
+		<!-- /#page-content-wrapper -->
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+	</script>
+	</th:block>
+</body>
 </html>
